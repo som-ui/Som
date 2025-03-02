@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Healthcare | GitHub Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #238636;
+            --secondary-color: #2ea043;
+            --dark-color: #0d1117;
+            --light-color: #f0f6fc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: rgba(13, 17, 23, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1578496479580-55b785be6d3a') center/cover;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #8b949e;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .features {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background-color: #161b22;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            padding: 5rem 5%;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: #30363d;
+        }
+
+        .timeline-item {
+            width: 45%;
+            padding: 1.5rem;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            top: 20px;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            left: -35px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            right: -35px;
+        }
+
+        footer {
+            background-color: #161b22;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid #30363d;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                margin-left: 40px;
+            }
+
+            .timeline-item::before {
+                left: -35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="logo">AI Health</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Revolutionizing Healthcare with AI</h1>
+            <p>Open-source artificial intelligence solutions for modern medical challenges</p>
+            <a href="https://github.com" class="cta-button">View on GitHub</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Medical Imaging Analysis</h3>
+                <p>Deep learning models for accurate diagnosis through X-ray and MRI analysis</p>
+            </div>
+            <div class="feature-card">
+                <h3>Drug Discovery</h3>
+                <p>Accelerated pharmaceutical research using neural networks</p>
+            </div>
+            <div class="feature-card">
+                <h3>Patient Monitoring</h3>
+                <p>Real-time health tracking with predictive analytics</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline" id="timeline">
+        <h2>Development Timeline</h2>
+        <div class="timeline-item">
+            <h3>Q1 2024: Research Phase</h3>
+            <p>Data collection and initial model development</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Q2 2024: Prototype Testing</h3>
+            <p>Clinical trials and model optimization</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Q3 2024: Open Source Release</h3>
+            <p>Public GitHub repository launch</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2024 AI Health Project. Open source under MIT License</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
